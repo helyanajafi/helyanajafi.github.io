@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helya Najafi | Makine Mühendisi</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #e74c3c;
+            --accent-color: #3498db;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #1a252f);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .header-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .header-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .header-text p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary-color);
+        }
+        
+        .about {
+            background-color: white;
+            padding: 3rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            padding: 1rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--light-color);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .projects {
+            padding: 3rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .education {
+            padding: 3rem 0;
+            background-color: white;
+        }
+        
+        .education-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+        
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+        }
+        
+        .education-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .education-item .date {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience {
+            padding: 3rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .experience-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .experience-item h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-item .company {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-item .date {
+            color: #777;
+            margin-bottom: 1rem;
+        }
+        
+        .contact {
+            padding: 3rem 0;
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 2rem;
+        }
+        
+        .contact-item {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .contact-item a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .contact-item a:hover {
+            color: var(--secondary-color);
+        }
+        
+        footer {
+            background-color: #1a252f;
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            .profile-image {
+                margin-bottom: 2rem;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <img src="/api/placeholder/200/200" alt="Helya Najafi" class="profile-image">
+            <div class="header-text">
+                <h1>Helya Najafi</h1>
+                <p>Makine Mühendisi</p>
+                <a href="#about" class="btn">Hakkımda</a>
+                <a href="#projects" class="btn">Projelerim</a>
+                <a href="#achievements" class="btn">Başarılarım</a>
+                <a href="#certificates" class="btn">Sertifikalarım</a>
+            </div>
+        </div>
+    </header>
+    
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Hakkımda</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Merhaba! Ben Helya Najafi, Yaşar Üniversitesi Makine Mühendisliği öğrencisiyim. Dinamik ortamlarda çalışmaya hazır, meraklı, organize ve yaratıcı bir bireyim.</p>
+                    
+                    <h3 style="margin-top: 1.5rem; color: var(--primary-color);">Teknik Beceriler</h3>
+                    <div class="skills">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">MATLAB</span>
+                        <span class="skill-tag">Simulink</span>
+                        <span class="skill-tag">Proteus</span>
+                        <span class="skill-tag">MS Office</span>
+                        <span class="skill-tag">Fusion 360</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projelerim</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="/api/placeholder/400/200" alt="Makine Mekanizması" class="project-image">
+                    <div class="project-content">
+                        <h3>Makine Mekanizmaları İçin Denge Sistemi</h3>
+                        <p>Mezuniyet Projesi</p>
+                        <p>Makine mekanizmalarının denge ve kararlılığını arttırmak için patentli bir sistem tasarladım ve geliştirdim. Bu proje, endüstriyel makinelerin performansını ve güvenliğini önemli ölçüde artırmaktadır.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/200" alt="Deprem Güvenlik Sistemi" class="project-image">
+                    <div class="project-content">
+                        <h3>Deprem Güvenlik Sistemi</h3>
+                        <p>Deprem tespiti yapıldığında otomatik olarak elektrik ve gazı kesen sensör tabanlı bir sistem tasarladım. Bu sistem, deprem anında olası yangın ve gaz kaçağı risklerini en aza indirerek can ve mal güvenliğini artırmaktadır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="education" id="education">
+        <div class="container">
+            <h2 class="section-title">Eğitim</h2>
+            <div class="education-item">
+                <h3>Yaşar Üniversitesi</h3>
+                <div class="date">Eylül 2020 - Haziran 2025</div>
+                <p>Makine Mühendisliği</p>
+                <p>Yüksek akademik başarı gösterdim ve çeşitli projeler geliştirdim. Tüm mühendislik derslerinde yüksek performans sergiledim.</p>
+            </div>
+            
+            <div class="education-item">
+                <h3>Büyük Çiğli Anadolu Lisesi</h3>
+                <div class="date">2017 - 2020</div>
+                <p>Lise Diploması</p>
+                <p>Matematik ve Fen alanlarında yüksek başarı gösterdim.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="projects" id="achievements">
+        <div class="container">
+            <h2 class="section-title">Başarılar</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <img src="/api/placeholder/400/200" alt="Matematik Yarışması" class="project-image">
+                    <div class="project-content">
+                        <h3>İran Geometri Sınavı İkinciliği</h3>
+                        <p>Ulusal çapta düzenlenen matematik geometri sınavında İran 2.'si oldum.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/200" alt="Kanguru Matematik" class="project-image">
+                    <div class="project-content">
+                        <h3>Matematik Kanguru Yarışması Birinciliği</h3>
+                        <p>Uluslararası Matematik Kanguru yarışmasında 1. olarak önemli bir başarı elde ettim.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/200" alt="Makarna Köprü" class="project-image">
+                    <div class="project-content">
+                        <h3>Makarna Yapıları Eğitimi</h3>
+                        <p>Köprü inşaatı üzerine makarna yapıları eğitimini tamamlayarak makine mühendisliği alanında pratik becerilerimi geliştirdim.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="certificates" id="certificates">
+        <div class="container">
+            <h2 class="section-title">Sertifikalar</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Microsoft Excel Basics</h3>
+                        <p>Microsoft Office programlarında ileri seviye uzmanlık sertifikası.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Math Kangaroo</h3>
+                        <p>Matematik Kanguru yarışmasına katılım sertifikası.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>Competition (Iran, AIS)</h3>
+                        <p>İran'da düzenlenen AIS yarışmasına katılım ve derecelendirme sertifikası.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-content">
+                        <h3>İş Sağlığı ve Güvenliği Sertifikası</h3>
+                        <p>Mesleki standartlara uygun iş sağlığı ve güvenliği eğitimi sertifikası.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2 class="section-title">Deneyim</h2>
+            <div class="experience-item">
+                <h3>Stajyer Mühendis</h3>
+                <div class="company">Krea Makina - Üretim Bölümü</div>
+                <div class="date">Aralık 2024</div>
+                <p>Üretim ortamında çalışarak, günlük operasyonel süreçlere katkı sağladım ve mühendislik için pratik bilgi edindim. Makine tasarımı ve analizi konularında deneyim kazandım.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">İletişim</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i>📞</i>
+                    <h3>Telefon</h3>
+                    <p><a href="tel:+905225257231">+90 522 525 7231</a></p>
+                </div>
+                
+                <div class="contact-item">
+                    <i>✉️</i>
+                    <h3>E-posta</h3>
+                    <p><a href="mailto:helyanajafi@gmail.com">helyanajafi@gmail.com</a></p>
+                </div>
+                
+                <div class="contact-item">
+                    <i>🔗</i>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://www.linkedin.com/in/helyanajafi" target="_blank">linkedin.com/in/helyanajafi</a></p>
+                </div>
+                
+                <div class="contact-item">
+                    <i>📍</i>
+                    <h3>Konum</h3>
+                    <p>İzmir, Türkiye</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Helya Najafi | Makine Mühendisi</p>
+        </div>
+    </footer>
+</body>
+</html>
